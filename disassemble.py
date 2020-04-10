@@ -57,11 +57,18 @@ def format_value(val, decimal):
     else:
         return "0x{:02x}".format(val)
 
+# formats an eight bit number to hex or decimal without two's complement conversion.
+def format_addr(val, decimal):
+    if decimal:
+        return str(val)
+    else:
+        return "0x{:02x}".format(val)
+
 # prints a string with the given address and indentation as requested
 def prepend_address(address, string, show_addr, tab, decimal):
     out_string = ""
     if show_addr:
-        out_string += "{0:3}: ".format(format_value(address, decimal))
+        out_string += "{0:3}: ".format(format_addr(address, decimal))
     if tab and string:
         out_string += 4*" "
     out_string += string
@@ -70,8 +77,7 @@ def prepend_address(address, string, show_addr, tab, decimal):
 # prints a label, with a leading newline for separation
 def print_label(address, show_addr, decimal):
     prepend_address(address, "", show_addr, False, decimal)
-    prepend_address(address, "loc_{}:".format(format_value(address, decimal)), show_addr, False, decimal)
-
+    prepend_address(address, "loc_{}:".format(format_addr(address, decimal)), show_addr, False, decimal)
 
 # represents an Instruction of any valid type
 class Instruction:
