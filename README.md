@@ -19,10 +19,6 @@ It takes the machine code produced by zassemble, `machine_code.coe`, and
 produces an `.asm` source output that will assemble back to the original
 machine code.
 
-I have found it particularly useful to compare the output of z-disassemble to
-my original input to zassemble. Doing so helped to ensure that there were no
-syntax errors or other mistakes causing zassemble to produce malformed output.
-
 ## Usage
 
 Run `python disassemble.py machine_code.coe` to disassemble a machine code file
